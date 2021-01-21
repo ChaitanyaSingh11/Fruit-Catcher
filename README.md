@@ -1,3 +1,3 @@
 # Fruit Catcher
 ## -by Chaitanya Singh
-Here's the [Link](https://github.com/ChaitanyaSingh11/Fruit-Catcher.git) to the **preview**.
+Here's the [link](https://chaitanyasingh11.github.io/Fruit-Catcher/) to the **preview**.

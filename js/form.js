@@ -42,7 +42,7 @@ class Form {
             player.index = playerCount;
             player.update();
             player.updateCount(playerCount);
-            this.greeting.html("Hello " + player.name)
+            this.greeting.html("Hello " + player.name + " !!")
             this.greeting.position(400, 250);
             this.greeting.style('color', 'transparent');
             this.greeting.style('font-size', '100px');
@@ -53,6 +53,7 @@ class Form {
         this.reset.mousePressed(() => {
             player.updateCount(0);
             game.update(0);
+            location.reload();
         });
 
     }

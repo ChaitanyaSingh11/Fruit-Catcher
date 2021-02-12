@@ -1,11 +1,9 @@
 class Game {
     constructor() {}
     getState() {
-        let gameStateRef = database.ref('gameState');
-        gameStateRef.on("value", function (data) {
+        database.ref('gameState').on("value", function (data) {
             gameState = data.val();
         })
-
     }
 
     update(state) {
@@ -64,7 +62,7 @@ class Game {
                     if (players[index - 1].isTouching(Fruits[i])) {
                         Fruits[i].remove();
                         Fruits.splice(i, 1);
-                        player.score++;
+                        player.score += 5;
                         allPlayers[plr].score = player.score;
                     }
                 }
@@ -115,9 +113,28 @@ class Game {
                 }
             }
         }
+        if (player.score == 100) {
+            gameState = 2;
+            player.updateCount(3);
+            this.update(2);
+            database.ref('/').update({
+                won: player.name
+            });
+        }
     }
 
     end() {
-        console.log("Game Ended");
+        // console.log("Game Ended");
+        form.hide();
+        let winner;
+        database.ref('won').on('value',(data)=>{
+            winner=data.val();
+        });
+        textAlign(CENTER);
+        textSize(72);
+        textFont('Algerian');
+        noStroke();
+        fill(255);
+        text(winner + " won !!",width/2,200);
     }
 }
